@@ -10,4 +10,14 @@ table, td, th, tr {
   border-collapse: collapse;
   margin: 0;
   padding: 15px;
+  font-size: 10px;
+}
+
+.main-container {
+  max-width: 1500px;
+}
+
+.inner {
+  max-width: 1000px;
+  margin: 0 auto;
 }
