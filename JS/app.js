@@ -35,25 +35,16 @@ CookieStore.prototype.calcCookiesThisHour = function() {
   this.cookiesEachHour.push(this.totalDaily);
 };
 
-CookieStore.prototype.calcHourlyTotals = function() {
-  var total = 0;
+function calcHourlyTotals() {
   for (var i = 0; i < hours.length; i++){
-    var totalTotal = 0;
+    var total = 0;
     for (var j = 0; j < allLocations.length; j++){
-      totalTotal = allLocations[j].cookiesEachHour[i] + total;
+      total = total + allLocations[j].cookiesEachHour[i];
+      // total += allLocations[j].cookiesEachHour[i];
     }
-    hourlyTotals.push(totalTotal);
+    hourlyTotals.push(total);
   }
 };
-// CookieStore.prototype.calcDailyTotals = function() {
-//   for (var i = 0; i < this.allLocations[0].length; i++){
-//     var totals = this.allLocations[i];
-//     for (var j = 0; j < cookiesEachHour[0].length; j++){
-//       var cookies = this.cookiesEachHour[j];
-//       this.dailyTotals.push(totals[i] + cookies[j]);
-//     }
-//   }
-// };
 
 var renderHeader = function() {
   var trEL = document.createElement('tr');
@@ -82,7 +73,7 @@ CookieStore.prototype.render = function() {
   theTable.appendChild(trEL);
 };
 // Footer TOTALLLLL
-CookieStore.prototype.renderFooter = function() {
+function renderFooter() {
   var tfootEL = document.createElement('tfoot');
   var trEL = document.createElement('tr');
   var thEL = document.createElement('td');
@@ -91,7 +82,7 @@ CookieStore.prototype.renderFooter = function() {
   trEL.appendChild(thEL);
   for (var i = 0; i < hours.length; i++) {
     var thEL = document.createElement('td');
-    thEL.textContent = hourlyTotals;
+    thEL.textContent = hourlyTotals[i];
     tfootEL.appendChild(trEL);
     trEL.appendChild(thEL);
   }
@@ -101,12 +92,10 @@ CookieStore.prototype.renderFooter = function() {
 var pikePlace = new CookieStore('Pike Place Market', 23, 65, 6.3);
 pikePlace.calcCustomersThisHour();
 pikePlace.calcCookiesThisHour();
-pikePlace.calcHourlyTotals();
 
 var seaTac = new CookieStore('Seatac', 3, 24, 1.2);
 seaTac.calcCustomersThisHour();
 seaTac.calcCookiesThisHour();
-seaTac.calcHourlyTotals();
 
 var seattleCenter = new CookieStore('Seattle Center', 11, 38, 3.7);
 seattleCenter.calcCustomersThisHour();
@@ -121,9 +110,15 @@ alki.calcCustomersThisHour();
 alki.calcCookiesThisHour();
 
 renderHeader();
-pikePlace.renderFooter();
-pikePlace.render();
-seaTac.render();
-seattleCenter.render();
-capitolHill.render();
-alki.render();
+// pikePlace.render();
+// seaTac.render();
+// seattleCenter.render();
+// capitolHill.render();
+// alki.render();
+
+for(var i = 0; i < allLocations.length; i++){
+  allLocations[i].render();
+}
+
+calcHourlyTotals();
+renderFooter();
