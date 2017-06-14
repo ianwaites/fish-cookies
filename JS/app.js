@@ -3,6 +3,7 @@
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var allLocations = [];
 var theTable = document.getElementById('pike');
+var hourlyTotals = [];
 
 function CookieStore(locationName, minCustomersPerHour, maxCustomersPerHour, avgCookiesPerCustomer) {
   this.locationName = locationName;
@@ -34,6 +35,16 @@ CookieStore.prototype.calcCookiesThisHour = function() {
   this.cookiesEachHour.push(this.totalDaily);
 };
 
+CookieStore.prototype.calcHourlyTotals = function() {
+  var total = 0;
+  for (var i = 0; i < hours.length; i++){
+    var totalTotal = 0;
+    for (var j = 0; j < allLocations.length; j++){
+      totalTotal = allLocations[j].cookiesEachHour[i] + total;
+    }
+    hourlyTotals.push(totalTotal);
+  }
+};
 // CookieStore.prototype.calcDailyTotals = function() {
 //   for (var i = 0; i < this.allLocations[0].length; i++){
 //     var totals = this.allLocations[i];
@@ -80,7 +91,7 @@ CookieStore.prototype.renderFooter = function() {
   trEL.appendChild(thEL);
   for (var i = 0; i < hours.length; i++) {
     var thEL = document.createElement('td');
-    thEL.textContent = this.cookiesEachHour;
+    thEL.textContent = hourlyTotals;
     tfootEL.appendChild(trEL);
     trEL.appendChild(thEL);
   }
@@ -90,10 +101,12 @@ CookieStore.prototype.renderFooter = function() {
 var pikePlace = new CookieStore('Pike Place Market', 23, 65, 6.3);
 pikePlace.calcCustomersThisHour();
 pikePlace.calcCookiesThisHour();
+pikePlace.calcHourlyTotals();
 
 var seaTac = new CookieStore('Seatac', 3, 24, 1.2);
 seaTac.calcCustomersThisHour();
 seaTac.calcCookiesThisHour();
+seaTac.calcHourlyTotals();
 
 var seattleCenter = new CookieStore('Seattle Center', 11, 38, 3.7);
 seattleCenter.calcCustomersThisHour();
@@ -102,6 +115,7 @@ seattleCenter.calcCookiesThisHour();
 var capitolHill = new CookieStore('Capitol Hill', 20, 38, 2.3);
 capitolHill.calcCustomersThisHour();
 capitolHill.calcCookiesThisHour();
+
 var alki = new CookieStore('Alki', 2, 16, 4.6);
 alki.calcCustomersThisHour();
 alki.calcCookiesThisHour();

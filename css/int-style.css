@@ -8,6 +8,6 @@ html body {
 table, td, th, tr {
   border: .5px solid black;
   border-collapse: collapse;
-  magin: 0;
+  margin: 0;
   padding: 15px;
 }
