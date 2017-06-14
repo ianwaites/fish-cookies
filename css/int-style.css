@@ -1,0 +1,13 @@
+html body {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+table, td, th, tr {
+  border: .5px solid black;
+  border-collapse: collapse;
+  magin: 0;
+  padding: 15px;
+}
