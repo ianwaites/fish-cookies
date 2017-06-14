@@ -11,6 +11,7 @@ function CookieStore(locationName, minCustomersPerHour, maxCustomersPerHour, avg
   this.avgCookiesPerCustomer = avgCookiesPerCustomer;
   this.customersEachHour = [];
   this.cookiesEachHour = [];
+  this.totalDaily = 0;
   allLocations.push(this);
 }
 
@@ -28,8 +29,21 @@ CookieStore.prototype.calcCookiesThisHour = function() {
   for (var j = 0; j < hours.length; j++) {
     var totalCookieSales = Math.ceil(this.customersEachHour[j] * this.avgCookiesPerCustomer);
     this.cookiesEachHour.push(totalCookieSales);
+    this.totalDaily += this.cookiesEachHour[j];
   }
+  this.cookiesEachHour.push(this.totalDaily);
 };
+
+// CookieStore.prototype.calcDailyTotals = function() {
+//   for (var i = 0; i < this.allLocations[0].length; i++){
+//     var totals = this.allLocations[i];
+//     for (var j = 0; j < cookiesEachHour[0].length; j++){
+//       var cookies = this.cookiesEachHour[j];
+//       this.dailyTotals.push(totals[i] + cookies[j]);
+//     }
+//   }
+// };
+
 var renderHeader = function() {
   var trEL = document.createElement('tr');
   var thEL = document.createElement('th');
@@ -49,30 +63,26 @@ CookieStore.prototype.render = function() {
   tdEL.textContent = this.locationName;
   trEL.appendChild(tdEL);
 
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < hours.length + 1; i++) {
     var tdEL = document.createElement('td');
     tdEL.textContent = this.cookiesEachHour[i];
     trEL.appendChild(tdEL);
   }
   theTable.appendChild(trEL);
 };
-
+// Footer TOTALLLLL
 CookieStore.prototype.renderFooter = function() {
-  var getTotal = this.cookiesEachHour;
   var tfootEL = document.createElement('tfoot');
   var trEL = document.createElement('tr');
   var thEL = document.createElement('td');
   thEL.textContent = 'Total';
   tfootEL.appendChild(trEL);
   trEL.appendChild(thEL);
-  for (var i = 0; i < this.cookiesEachHour.length; i++) {
-    var x = this.cookiesEachHour[i];
-    for (var j = 0; j < x.length; j++) {
-      var thEL = document.createElement('td');
-      thEL.textContent = i + j;
-      tfootEL.appendChild(trEL);
-      trEL.appendChild(thEL);
-    }
+  for (var i = 0; i < hours.length; i++) {
+    var thEL = document.createElement('td');
+    thEL.textContent = this.cookiesEachHour;
+    tfootEL.appendChild(trEL);
+    trEL.appendChild(thEL);
   }
   theTable.appendChild(tfootEL);
 };
