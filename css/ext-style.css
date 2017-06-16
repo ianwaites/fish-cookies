@@ -8,6 +8,7 @@
 		min-width:600px;		/* Minimum width of layout - remove line if not required */
 						/* The min-width property does not work in old versions of Internet Explorer */
 		font-size:90%;
+
 	}
 /*.....*/
 ul {
@@ -35,7 +36,7 @@ li a:hover:not(.active) {
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #cecece;
 }
 /*....*/
 
@@ -152,9 +153,7 @@ li a:hover:not(.active) {
 	/* 3 Column settings */
 	.threecol {
 		background:#eee;		/* right column background colour */
-    background-image: url("/img/assets/shirt.jpg");
-    background-repeat: no-repeat;
-    background-position: right top;
+
 	}
 	.threecol .colmid {
 		right:25%;			/* width of the right column */
