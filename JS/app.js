@@ -102,7 +102,7 @@ function renderFooter() {
     thEL.textContent = hourlyTotal;
     trEL.appendChild(thEL);
   }
-  thEL = document.createElement('td');
+  thEL = document.createElement('th');
   thEL.textContent = totalOfTotals;
   trEL.appendChild(thEL);
   theTable.appendChild(trEL);
