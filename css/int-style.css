@@ -3,14 +3,18 @@ html body {
   padding: 0px;
 }
 
-
-
 table, td, th, tr {
   border: .5px solid black;
   border-collapse: collapse;
   margin: 0;
   padding: 15px;
   font-size: 10px;
+  max-width: 960px;
+}
+
+#moreStores {
+  max-width: 1080px;
+  font-size: 12px;
 }
 
 .main-container {
