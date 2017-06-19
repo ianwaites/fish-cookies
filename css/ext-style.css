@@ -1,191 +1,494 @@
-/* General styles */
-	body {
-		margin:0;
-		padding:0;
-		border:0;			/* This removes the border around the viewport in old versions of IE */
-		width:100%;
-		background:#fff;
-		min-width:600px;		/* Minimum width of layout - remove line if not required */
-						/* The min-width property does not work in old versions of Internet Explorer */
-		font-size:90%;
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
-	}
-/*.....*/
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+/*
+COLORS:
+#1FBED6
+#97C30A
+#FF717E
+#C0BCB6
+#555555
+*/
+
+/* removing browser default margins */
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
 }
 
-li {
-    float: left;
+/* setting default fonts and bg color for body - mainly wanted san-sarif and some good font weight!*/
+body {
+  background-color: #fff;
+  color: #222;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  padding-top: 60px;
 }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+.social-icon-first {
+  padding: 0 15px 0 0px;
+  float:left;
+
 }
 
-li a:hover:not(.active) {
-    background-color: #111;
+.social-icon {
+  padding: 0 15px 0 15px;
+  float: left;
+
 }
 
-.active {
-    background-color: #cecece;
+.social-icon-last {
+  padding: 0 0 0 15px;
+  float: left;
+
 }
-/*....*/
 
-	a {
-		color:#369;
-	}
-	a:hover {
-		color:#fff;
-		background:#369;
-		text-decoration:none;
-	}
-	h1, h2, h3 {
-		margin:.8em 0 .2em 0;
-		padding:0;
-		clear:both;
-	}
-	p {
-		margin:.4em 0 .8em 0;
-		padding:0;
-	}
-	img {
-		margin:10px 0 5px;
-	}
+.inner {
+  width: 600px;
+  float: right;
+}
 
-	/* Header styles */
-	#header {
-		clear:both;
-		float:left;
-		width:100%;
-	}
-	#header {
-		border-bottom:1px solid #000;
-	}
-	#header p,
-	#header h1,
-	#header h2 {
-		padding:.4em 15px 0 15px;
-		margin:0;
-	}
-	#header ul {
-		clear:left;
-		float:left;
-		width:100%;
-		list-style:none;
-		margin:10px 0 0 0;
-		padding:0;
-	}
-	#header ul li {
-		display:inline;
-		list-style:none;
-		margin:0;
-		padding:0;
-	}
-	#header ul li a {
-		display:block;
-		float:left;
-		margin:0 0 0 1px;
-		padding:3px 10px;
-		text-align:center;
-		background:#eee;
-		color:#000;
-		text-decoration:none;
-		position:relative;
-		left:15px;
-		line-height:1.3em;
-	}
-	#header ul li a:hover {
-		background:#369;
-		color:#fff;
-	}
-	#header ul li a.active,
-	#header ul li a.active:hover {
-		color:#fff;
-		background:#000;
-		font-weight:bold;
-	}
-	#header ul li a span {
-		display:block;
-	}
-	/* 'widths' sub menu */
-	#layoutdims {
-		clear:both;
-		background:#eee;
-		border-top:4px solid #000;
-		margin:0;
-		padding:6px 15px !important;
-		text-align:right;
-	}
-	/* column container */
-	.colmask {
-		position:relative;	/* This fixes the IE7 overflow hidden bug */
-		clear:both;
-		float:left;
-		width:100%;			/* width of whole page */
-		overflow:hidden;		/* This chops off any overhanging divs */
-	}
-	/* common column settings */
-	.colright,
-	.colmid,
-	.colleft {
-		float:left;
-		width:100%;			/* width of page */
-		position:relative;
-	}
-	.col1,
-	.col2,
-	.col3 {
-		float:left;
-		position:relative;
-		padding:0 0 1em 0;	/* no left and right padding on columns, we just make them narrower instead
-						only padding top and bottom is included here, make it whatever value you need */
-		overflow:hidden;
-	}
-	/* 3 Column settings */
-	.threecol {
-		background:#eee;		/* right column background colour */
+/* Nav Elements */
 
-	}
-	.threecol .colmid {
-		right:25%;			/* width of the right column */
-		background:#fff;		/* center column background colour */
+.face-icon {
+  margin: 10px 10px 0px 10px;
+  width: 100px;
+  height: 38px;
+  float: left;
+  text-align: center;
+  display: inline-block;
+}
 
-	}
-	.threecol .colleft {
-		right:50%;			/* width of the middle column */
-		background:#f4f4f4;	/* left column background colour */
-	}
-	.threecol .col1 {
-		width:46%;			/* width of center column content (column width minus padding on either side) */
-		left:102%;			/* 100% plus left padding of center column */
-	}
-	.threecol .col2 {
-		width:21%;			/* Width of left column content (column width minus padding on either side) */
-		left:31%;			/* width of (right column) plus (center column left and right padding) plus (left column left padding) */
-	}
-	.threecol .col3 {
-		width:21%;			/* Width of right column content (column width minus padding on either side) */
-		left:85%;
-    			/* Please make note of the brackets here:
-						(100% - left column width) plus (center column left and right padding) plus (left column left and right padding) plus (right column left padding) */
-	}
-	/* Footer styles */
-	#footer {
-		clear:both;
-		float:left;
-		width:100%;
-		border-top:1px solid #000;
-	}
-	#footer p {
-		padding:10px;
-		margin:0;
-	}
+
+/* nav sizing and color */
+nav {
+  background-color: rgba(255, 255, 255, 1);
+  color: #888;
+  display: block;
+  overflow: hidden;
+  float: right;
+  margin: 0px 0px 8px 0px;
+  padding: 0px 25px 0px 25px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 0;
+}
+
+/* removing default padding from ul */
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* changing list items into block items with a slight transition setting*/
+nav ul li {
+  display: inline-block;
+  list-style-type: none;
+  transition: all 0.2s;
+}
+
+/* caret settings for projects drop down - created by using borders to make triangle */
+/*nav > ul > li > a > .caret {
+  border-top: 4px solid #aaa;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+  display: inline-block;
+  height: 0;
+  width: 0;
+  vertical-align: middle;
+  transition: color 0.1s linear;
+}*/
+
+/* font color and alignment settings */
+nav > ul > li > a {
+  color: #aaa;
+  display: block;
+  line-height: 60px;
+  padding: 0 24px;
+  text-decoration: none;
+}
+
+/* hover color */
+nav > ul > li:hover {
+  background-color: rgb( 40, 44, 47 );
+}
+
+/* hover over select color */
+nav > ul > li:hover > a {
+  color: rgb( 255, 255, 255 );
+}
+
+/* caret hover link settings */
+nav > ul > li:hover > a > .caret {
+  border-top-color: rgb( 255, 255, 255 );
+}
+
+/* caret hover color settings */
+nav > ul > li > div ul > li:hover > a > .caret {
+    border-left-color: rgb(255,255,255);
+}
+
+/* drop down nav settings */
+nav > ul > li > div {
+  background-color: rgb( 40, 44, 47 );
+  border-top: 0;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.055);
+  display: none;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 170px;
+  visibility: hidden;
+  -transition: opacity 0.2s;
+}
+
+/* drop down hover color settings */
+nav > ul > li:hover > div {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* drop down nav display and positioning*/
+nav > ul > li > div ul > li {
+  display: block;
+  position: relative;
+}
+
+/* font color and spacing for drop down nav */
+nav > ul > li > div ul > li > a {
+  color: #fff;
+  display: block;
+  padding: 12px 24px;
+  text-decoration: none;
+}
+
+/* background color for drop down nav */
+nav > ul > li > div ul > li:hover > a {
+  background-color: rgba( 255, 255, 255, 0.1);
+}
+
+/* ---------------- Header Section --------------- */
+@media (min-width: 1200px){
+  width: 1170px;
+}
+
+header {
+  text-align: center;
+  color: #000;
+  background: #fff;
+}
+
+header .container {
+  padding-top: 170px;
+  padding-bottom: 200px;
+}
+
+header .container .row {
+  padding
+}
+
+header .intro-text img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+header .intro-text .name {
+  display: block;
+  font-family: 'Raleway';
+  font-size: 4.75em;
+  font-weight: 300;
+  font-style: normal;
+  padding: .3em;
+}
+
+header .intro-text .blerb {
+  display: block;
+  font-family: 'Raleway';
+  font-size: 1.5em;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* ---------------- About Me Section --------------- */
+section {
+  padding: 3em 0;
+}
+/* About Me & header spacing */
+.aboutSect {
+  background-color: #C0BCB6;
+}
+
+.aboutSect > .container > .row > div h2 {
+  margin-top: 0px;
+  margin-bottom: 24px;
+  padding-top: 24px;
+  color: #000;
+}
+
+#what-color {
+  color: #FF717E;
+}
+
+.aboutme {
+  padding: .3em;
+}
+
+.banner ol {
+  padding-left: 46px;
+}
+
+.numList li {
+  display: inline;
+}
+
+#fish {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-top: 30px;
+}
+
+#frost {
+  margin-topt: 30px;
+}
+
+#newCutter {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-top: 30px;
+}
+
+#shirt {
+  border-radius: 50%;
+  margin-top: 30px;
+}
+
+#family {
+  margin-top: 50px;
+  border-radius: 50%;
+}
+
+#aboutP {
+  display: inline-block
+  float:right;
+  max-width: 925px;
+  text-align: justify;
+}
+
+#pic_right {
+  float: left;
+}
+
+#pic_center {
+  float: left;
+}
+
+#pic_left {
+
+}
+
+/* Padding for About Me P tags */
+/*#aboutP {
+  padding-left: 46px;
+}*/
+
+
+/* ---------------- Projects Section --------------- */
+
+/** {
+  outline: 1px solid green;
+}*/
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.col-12 {
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+section h2 {
+  margin: 0 0 24px 0;
+  padding-top: 24px;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-size: 3em;
+  font-weight: 300;
+  font-style: normal;
+  color: #555555;
+}
+
+#blood-color {
+
+}
+
+#sweat-color {
+
+}
+
+#tears-color {
+
+}
+
+section h3 {
+  font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+  font-size: 2em;
+  font-weight: 300;
+  font-style: normal;
+  color: #555555;
+  margin: .5em 0 .2em 0;
+  padding: 0px;
+}
+
+.projects > .colText > h4 {
+  margin: 0 0 15px 0;
+  font-weight: bold;
+}
+
+section p {
+  margin-top: 0px;
+}
+
+
+
+/* back banner for Projects Section */
+.projSect {
+  background-color: #1FBED6;
+  margin: 0;
+}
+
+.projects {
+  padding: .2em;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: table;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.linkhover:hover {
+  color: #97C30A;
+}
+
+/* Projects header color */
+#projectHead {
+  color: #cecece;
+}
+
+/* Project Columns */
+
+.colText {
+  color: #000;
+}
+
+#pagewrap {
+  padding: 5px;
+	max-width: 980px;
+	margin: 0 auto 20px auto;
+}
+
+#leftCol {
+	max-width: 290px;
+	float: left;
+	padding: 5px 15px;
+}
+
+#middleCol {
+	max-width: 294px; /* Account for margins + border values */
+	float: left;
+	padding: 5px 15px;
+	margin: 0px 10px 5px 10px;
+}
+
+#rightCol {
+	max-width: 270px;
+	padding: 5px 15px;
+	float: left;
+}
+
+
+
+/* ---------------- Work History Section --------------- */
+.workSect {
+  background-color: #97C30A;
+}
+.workSect > .container > .row > div h2 {
+  margin-top: 0px;
+  margin-bottom: 24px;
+  padding-top: 24px;
+  color: #000;
+}
+
+.workSect > .container > .row > div > span {
+  display: block;
+  font-family: 'Raleway';
+  font-size: 1.5em;
+  font-weight: 300;
+  font-style: normal;
+}
+
+#workP {
+  margin-top: 30px;
+}
+
+/* ---------------- Contact Section --------------- */
+
+.contactSect {
+  background-color: #fff;
+}
+
+.contactSect > .container > .row > div h2 {
+  margin-top: 0px;
+  margin-bottom: 24px;
+  padding-top: 24px;
+  color: #000;
+}
+
+#center {
+  text-align: center;
+}
+
+.icons {
+  margin: 0 auto;
+  padding: 5px;
+  max-width: 250px;
+}
+
+.icons > a:link {
+  color: #cecece;
+}
+
+.icons > a:visited {
+  color: #cecece;
+}
+
+.fa:hover {
+  color: #97C30A;
+}
+
+.icons > a:visited {
+  color: #333;
+}
