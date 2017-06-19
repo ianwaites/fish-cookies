@@ -132,9 +132,9 @@ function handleStoreSubmit(event) {
   var minCustomers = parseInt(event.target.minCustomers.value);
   var maxCustomers = parseInt(event.target.maxCustomers.value);
   var avgCookie = parseFloat(event.target.avgCookiesSold.value);
-
+  console.log('go here');
   // prevent empty
-  if(!newStoreLocation || !minCustomers || !maxCustomers || !avgCookies){
+  if(!newStoreLocation || !minCustomers || !maxCustomers || !avgCookie){
     return alert('All fields must have a value');
   }
 
